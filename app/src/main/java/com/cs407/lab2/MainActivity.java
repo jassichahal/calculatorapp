@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,7 +19,14 @@ public class MainActivity extends AppCompatActivity {
     public void goToActivity(String s) {
         Log.i("INFO",s);
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("result", s);
+        intent.putExtra("operation", s);
         startActivity(intent);
+    }
+
+    public void clickFunction(View view) {
+        //Log.i("INFO", "Button Pressed");
+        EditText myTextField = (EditText) findViewById(R.id.editText1);
+        Toast.makeText(MainActivity.this, myTextField.getText().toString(), Toast.LENGTH_LONG).show();
+        goToActivity(myTextField.getText().toString());
     }
 }
